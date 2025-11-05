@@ -1,0 +1,107 @@
+:root {
+    /* color palette*/
+    --margin-background: #434647;
+    --main-text: #5BE762;
+}
+body
+{
+    background-image: url(images/backgroundImg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    color: var(--main-text)
+}
+
+/* Header stuff */
+header > ul
+{
+    margin: 0;
+    padding: 0;
+    background-color: var(--margin-background);
+    color: var(--main-text);
+    list-style: none;
+    text-align: center;
+    font-size: 150%;
+}
+header > ul >li > a
+{
+    color: var(--main-text);
+    text-decoration: none;
+}
+
+/* Basic list stuff */
+li a.active
+{
+    background-color: #555555;
+    text-decoration: underline;
+}
+li a:hover:not(.active) {
+    background-color: #555555;
+}
+
+/* Footer stuff */
+
+footer > ul
+{
+    margin: 0px;
+    padding: 15px;
+    background-color: var(--margin-background);
+    text-align: center;
+    font-size: 150%;
+    display: flex;
+    justify-content: center;
+}
+footer > ul > li
+{
+    list-style-type: none;
+    margin-right: 10px;
+}
+footer > ul > li > a
+{
+    background-color: var(--main-text);
+    border-radius: 10px;
+    margin: 50px;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+}
+
+/*  */
+
+
+@media screen and (min-width: 600px) {
+    header > ul
+    {
+        font-size: 175%;
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        width: 100%;
+        top: 0%;
+    }
+    header>ul>li
+    {
+        margin-top: 1%;
+        margin-bottom: 1%;
+        margin-right: 5%;
+    }
+}
+@media screen and (min-width: 1000px) {
+    header > ul
+    {
+        font-size: 200%;
+        display: block;
+        text-align: left;
+        position: fixed;
+        height: 100%;
+        width: 10%;
+        top: 0%;
+    }
+    header>ul>li
+    {
+        margin-top: 30%;
+    }
+}
