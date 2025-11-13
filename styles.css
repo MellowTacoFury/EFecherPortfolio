@@ -2,6 +2,7 @@
     /* color palette*/
     --margin-background: #434647;
     --main-text: #5BE762;
+    --highlight-main-text: #c6e6c8;
 }
 body
 {
@@ -94,7 +95,7 @@ p
 }
 img
 {
-    width: 50%;
+    width: 40%;
 }
 
 /* forms */
@@ -133,7 +134,46 @@ textarea
     color: black;
 }
 
-
+/* project page*/
+.ProjectsGrid
+{
+    grid-template-columns: repeat(auto-fit, minmax(200px, 500px));
+    display: grid;
+    padding: 50px;
+    margin-top: 50px;
+    justify-content: center;
+}
+.ProjectsGrid div
+{
+    border: 1px solid white;
+    background-color: #000000;
+    padding-top: 10px;
+    font-size: 30px;
+    text-align: center;
+    margin: 10px;
+}
+.ProjectsGrid img
+{
+    width: 10em;
+}
+.ProjectsGrid h2
+{
+    font-size: 1.5em;
+}
+.ProjectsGrid p
+{
+    font-size: .9em;
+}
+.ProjectsGrid a
+{
+    text-decoration: none;
+    color: var(--main-text);
+}
+.ProjectsGrid a:hover
+{
+    color: var(--highlight-main-text);
+    font-weight: bold;
+}
 @media screen and (min-width: 600px) {
     header > ul
     {
@@ -160,6 +200,10 @@ textarea
     {
         padding: 3%;
     }
+    img
+    {
+        max-width: 400px;
+    }
     footer
     {
         position: fixed;
@@ -173,11 +217,25 @@ textarea
         justify-content: center;
         margin: 5%;
     }
+    
     .contact-flexer > label
     {
         background-color: black;
         margin-right: 50px;
         min-width: 80px;
+    }
+    /* project page*/
+    .ProjectsGrid
+    {
+        margin-bottom: 2%;
+    }
+    .ProjectsGrid p
+    {
+        font-size: 1.1em;
+    }
+    .ProjectsGrid img
+    {
+        width: 13em;
     }
 }
 @media screen and (min-width: 1450px) {
@@ -200,6 +258,10 @@ textarea
     {
         margin-top: 3%;
     }
+    img
+    {
+        max-width: 800;
+    }
     .aboutFlexContainer {
       display: grid;
       gap: 2px;
@@ -217,12 +279,18 @@ textarea
     }
     input[type=submit]
     {
-        padding: 20px;
+        margin-left: 100px;
     }
     .place-contacts-next-to {
         display: inline-block;
         width: 30%;
         margin-right: 20px;
     }
-    
+    /* project page*/
+    .ProjectsGrid
+    {
+        padding: 50px;
+        margin-top: 0px;
+        margin-left: 200px;
+    }
 }
