@@ -43,7 +43,7 @@ gameOpenButton2048.addEventListener("click", Open2048Function);
 /* Tick Tack Toe */
 const cells = document.querySelectorAll('.cellTTT');
 const statusMessage = document.getElementById('TTTstatus-message');
-const restartButton = document.getElementById('restart-button');
+const TTTrestartButton = document.getElementById('TTTrestart-button');
 
 let gameBoard = ['', '', '', '', '', '', '', '', ''];
 let chosenSpots = 0;
@@ -109,11 +109,76 @@ function changePlayer() {
 
 
 /* HangMan */
+let HMwordToguess = "";
+let playingHM = true;
+let knownLetters = [];
+let wrongCount = 0;
+let maxWrong = 4;
+let HMImage = document.getElementById("HMMan");
+const HMrestartButton = document.getElementById('HMrestart-button');
 
+//Dont let the submit button reload everything
+const hmForm = document.getElementById('HMForm');
+hmForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevents the default form submission (page reload)
+    const inputValue = hmForm.elements.HMinput.value;
+    console.log('Form submitted without reload. Input value:', inputValue);
+    //clear the input field
+    CheckHMStatus(inputValue);
+  });
 
+function CheckHMStatus(theInput)
+{
+    //check to see if the input is 
+    /*1 letter, not already guessed - then wether or not its in the word */
+    wrongCount++;
+    ChangeHMMan();
+}
 
+function ChangeHMMan()
+{
+    //The physical hangman man
+    if(playingHM == true){
+        switch (wrongCount) {
+            case 0:
+                HMImage.src = "images/HM/HM1.png";
+                break;
+            case 1:
+                HMImage.src = "images/HM/HM2.png";
+                break;
+            case 2:
+                HMImage.src = "images/HM/HM3.png";
+                break;
+            case 3:
+                HMImage.src = "images/HM/HM4.png";
+                break;
+            case 4:
+                HMImage.src = "images/HM/HM5.png";
+                playingHM = false;
+                HMGameOver();
+                break;
+            default:
+                break;
+        }
+    }
+    
+}
+function ChangeHMText()
+{
+    //weather or not to show ----- or words
+}
 
-function restartGame() {
+function HMGameOver()
+{
+    //fully revealed letter vs fully hung man
+}
+
+function HMChooseWord()
+{
+    //return a rand word
+}
+
+function restartTTTGame() {
     /* TickTacToe */
     gameActive = true;
     currentPlayer = 'X';
@@ -124,9 +189,21 @@ function restartGame() {
     {
         cells[i].textContent = '';
     }
+    
+}
+function restartHMGame()
+{
+    console.log("Restarting");
     /* HM */
+    //HMwordToGuess = HMChooseWord();
+    knownLetters = [];
+    playingHM = true;
+    wrongCount = 0;
+    ChangeHMMan();
+    // hmForm.elements.HMinput.value = "";//???
     /* 2048 */
 }
 
 cells.forEach(cell => cell.addEventListener('click', handleCellClick));
-restartButton.addEventListener('click', restartGame);
+TTTrestartButton.addEventListener('click', restartTTTGame);
+HMrestartButton.addEventListener('click', restartHMGame);
