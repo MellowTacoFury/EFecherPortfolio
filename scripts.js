@@ -46,6 +46,7 @@ const statusMessage = document.getElementById('TTTstatus-message');
 const restartButton = document.getElementById('restart-button');
 
 let gameBoard = ['', '', '', '', '', '', '', '', ''];
+let chosenSpots = 0;
 let currentPlayer = 'X';
 let gameActive = true;
 statusMessage.textContent = `It's X's turn`;
@@ -66,6 +67,7 @@ function handleCellClick(e) {
 
     gameBoard[clickedCellIndex] = currentPlayer;//Set the cell to the player
     clickedCell.textContent = currentPlayer;//Set the cell text to the player
+    chosenSpots++;
 
     checkResult();//Check if there is a win
     changePlayer();
@@ -80,6 +82,12 @@ function checkResult() {
             gameActive = false;
             return;
         }
+    }
+    if(chosenSpots == 9)
+    {
+        statusMessage.innerHTML = "Both players loose!";
+        gameActive = false;
+        return;
     }
 }
 
@@ -109,6 +117,7 @@ function restartGame() {
     /* TickTacToe */
     gameActive = true;
     currentPlayer = 'X';
+    chosenSpots = 0;
     statusMessage.textContent = `It's X's turn`;
     gameBoard = ['', '', '', '', '', '', '', '', ''];
     for(let i = 0; i < gameBoard.length; i++)
