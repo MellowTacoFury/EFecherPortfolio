@@ -19,13 +19,16 @@
     <section>
         <main>
             <h1>Games!!</h1>
-            <div class="ScrollingWheel">
+            <div class="OnlyMobileDiv">
+                <h3>You're on mobile, which I haven't gotten the games going for yet,<br>Try again later or switch to a larger device</h3>
+            </div>
+            <div class="ScrollingWheel NotMobileSupported">
                 <div class="NotMobileSupported" id="OpenGameButtonTTT"><h2>Tick Tac Toe</h2></div>
                 <div class="NotMobileSupported" id="OpenGameButtonHM"><h2>Hangman</h2></div>
                 <div class="NotMobileSupported" id="OpenGameButton2048"><h2>2048</h2></div>
                 
             </div>
-            <div id="GamePopup" class="Hidden">
+            <div id="GamePopup" class="Hidden NotMobileSupported">
                  <div id="TTTBoard">Tick Tac Toe!!
                     <div class="TTTBoard Hidden">
                     <div class="cellTTT" data-cell-index="0"></div>
@@ -64,6 +67,7 @@
                 </div>
                 <button type="button" class="close-btn" id="close-btn">Exit</button>
             </div>
+            
         </main>
     </section>
 
