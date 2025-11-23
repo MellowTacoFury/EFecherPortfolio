@@ -214,7 +214,7 @@ img
     margin-bottom: 500px;
 }
 
-@media screen and (min-width: 1000) {
+@media screen and (min-width: 767px) {
     header > ul
     {
         height: 10%;
@@ -372,6 +372,10 @@ img
         border-radius: 20px;
         margin-bottom: 20px;
     }
+    .OnlyMobileDiv
+    {
+        display: none;
+    }
 }
 @media screen and (min-width: 1450px) {
     header > ul
@@ -415,11 +419,21 @@ img
     .contact input[type=submit]
     {
         margin-left: 100px;
+        margin-bottom: 200px;
     }
     .contact .place-contacts-next-to {
         display: inline-block;
         width: 30%;
         margin-right: 20px;
+    }
+    .contact-flexer:not(.place-contacts-next-to) label
+    {
+        text-align: center;
+    }
+    .contact textarea
+    {
+        margin-left: 50px;
+        margin-bottom: 50px;
     }
     /* project page*/
     .ProjectsGrid
@@ -427,6 +441,10 @@ img
         padding: 50px;
         margin-top: 0px;
         margin-left: 200px;
+    }
+    .OnlyMobileDiv
+    {
+        display: none;
     }
 }
 
