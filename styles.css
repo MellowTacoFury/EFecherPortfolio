@@ -77,7 +77,6 @@ h1
 {
     font-size: 500%;
     text-align: center;
-    margin-top: 200px;
 }
 
 /* h2 */
@@ -211,7 +210,7 @@ img
 }
 
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 767px) {
     header > ul
     {
         height: 10%;
