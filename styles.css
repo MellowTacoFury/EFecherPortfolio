@@ -214,7 +214,7 @@ img
     margin-bottom: 500px;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 480px) {
     header > ul
     {
         height: 10%;
