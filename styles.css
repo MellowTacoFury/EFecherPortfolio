@@ -207,10 +207,14 @@ img
 {
     display: flex;
     text-align: center;
+    justify-content: center;
+}
+.ExtraBreak
+{
+    margin-bottom: 500px;
 }
 
-
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 800px) {
     header > ul
     {
         height: 10%;
