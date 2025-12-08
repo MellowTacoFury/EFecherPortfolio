@@ -109,13 +109,29 @@ function changePlayer() {
 
 
 /* HangMan */
-let HMwordToguess = "";
 let playingHM = true;
 let knownLetters = [];
 let wrongCount = 0;
-let maxWrong = 4;
+let maxWrong = 6;
 let HMImage = document.getElementById("HMMan");
 const HMrestartButton = document.getElementById('HMrestart-button');
+const HMDisplayWord = document.getElementById('HMWord');
+const HMStatusText = document.getElementById('HMstatus');
+
+/* Stuff for getting the rand word */
+let wordSize = 5;
+let url = "https://random-word-api.herokuapp.com/word?length="+wordSize;
+let response;
+let HMwordToguess;
+HMStatusText.textContent = 'Playing!!';
+
+async function GetWord()
+{
+    let response = await fetch(url);
+    HMwordToguess = await response.json();
+    ChangeHMText();
+}
+GetWord();
 
 //Dont let the submit button reload everything
 const hmForm = document.getElementById('HMForm');
@@ -125,14 +141,37 @@ hmForm.addEventListener('submit', function(event) {
     console.log('Form submitted without reload. Input value:', inputValue);
     //clear the input field
     CheckHMStatus(inputValue);
+    hmForm.elements.HMinput.value = "";
   });
 
 function CheckHMStatus(theInput)
 {
-    //check to see if the input is 
-    /*1 letter, not already guessed - then wether or not its in the word */
-    wrongCount++;
-    ChangeHMMan();
+    /*correct input*/
+    if(playingHM)
+    {
+    if(theInput.length === 1 && /^[a-zA-Z]$/.test(theInput))
+        {
+            /* not already guessed */
+            if(knownLetters.includes(theInput) == false)
+            {
+                /*In the word */
+                if(HMwordToguess[0].includes(theInput))
+                {
+                    knownLetters.push(theInput);//always add it to the list
+                    ChangeHMText();
+                }
+                else
+                {
+                    knownLetters.push(theInput);//always add it to the list
+                    /*Not in the word */
+                    wrongCount++;
+                    ChangeHMMan();
+                }
+                
+            }
+        }
+    }
+    
 }
 
 function ChangeHMMan()
@@ -154,8 +193,14 @@ function ChangeHMMan()
                 break;
             case 4:
                 HMImage.src = "images/HM/HM5.png";
+                break;
+            case 5:
+                HMImage.src = "images/HM/HM6.png";
+                break;
+            case 6:
+                HMImage.src = "images/HM/HM7.png";
                 playingHM = false;
-                HMGameOver();
+                HMGameOver(false);
                 break;
             default:
                 break;
@@ -165,17 +210,46 @@ function ChangeHMMan()
 }
 function ChangeHMText()
 {
+    let winSoFar = true;
+    let textToDisplay = "Word so far: ";
     //weather or not to show ----- or words
+    for (let i = 0; i < HMwordToguess[0].length; i++) 
+    {
+        if(knownLetters.includes(HMwordToguess[0][i]))
+        {
+            textToDisplay = textToDisplay + HMwordToguess[0][i];
+        }
+        else
+        {
+             textToDisplay = textToDisplay + '_';
+             winSoFar = false
+        }
+         textToDisplay = textToDisplay + ' ';
+    }
+    
+    textToDisplay = textToDisplay + ':)';
+    HMDisplayWord.innerHTML = textToDisplay;
+    if(winSoFar == true)
+    {
+        playingHM = false;
+        HMGameOver(true);
+    }
 }
 
-function HMGameOver()
+function HMGameOver(win)
 {
-    //fully revealed letter vs fully hung man
-}
-
-function HMChooseWord()
-{
-    //return a rand word
+    if(win == true)
+    {
+        HMDisplayWord.innerHTML = "Word is: " + HMwordToguess[0];
+        HMStatusText.textContent = 'WIN!! Good Job';
+    }
+    if(win == false)
+    {
+        HMDisplayWord.innerHTML = "Word is: " + HMwordToguess[0];
+        HMStatusText.textContent = 'FAIL!! Try again';
+    }
+    console.log(HMStatusText.textContent);
+    
 }
 
 function restartTTTGame() {
@@ -193,15 +267,12 @@ function restartTTTGame() {
 }
 function restartHMGame()
 {
-    console.log("Restarting");
-    /* HM */
-    //HMwordToGuess = HMChooseWord();
+    GetWord();
     knownLetters = [];
     playingHM = true;
     wrongCount = 0;
     ChangeHMMan();
-    // hmForm.elements.HMinput.value = "";//???
-    /* 2048 */
+    HMStatusText.textContent = 'Playing!!';
 }
 
 cells.forEach(cell => cell.addEventListener('click', handleCellClick));

@@ -331,25 +331,51 @@ img
     {
         text-align: center;
         
+  display: grid;
+        grid-template-areas:
+        "header header"
+        "menu content"
+        "footer footer";
+        
     }
     .HMForm
     {
         padding-top: 10px;
+        grid-area: header;
     }
     .HMForm input
     {
         width: 75%;
-        height: 50%;
+        height: 15px;
         padding: 12px;
         color: black;
     }
     .HMForm input[type=submit]
     {
-        margin-bottom: 50px;
+        height: 15px;
+        padding-bottom: 20px;
     }
-    #HMMan
+    #HMMan/*img*/
     {
-        width: 100%;
+        /* height: 80%; */
+        width: 90%;
+        grid-area: content;
+    }
+    .HMWord
+    {
+        margin-right: 20px;
+    }
+    #HMWord/*text*/
+    {
+        font-size: 30px;
+        grid-area: header;
+        padding-right: 40px;
+    }
+
+    #HMstatus-message
+    {
+        font-size: 20px;
+        grid-area: menu;
     }
 
     .close-btn
@@ -358,6 +384,7 @@ img
         background-color: inherit;
         font-size: inherit;
         border-radius: 20px;
+        grid-area: footer;
     }
 
     .close-btn:hover
@@ -371,6 +398,7 @@ img
         font-size: inherit;
         border-radius: 20px;
         margin-bottom: 20px;
+        grid-area: footer;
     }
     .OnlyMobileDiv
     {
