@@ -115,7 +115,7 @@ img
 .contact input
 {
     width: 75%;
-    height: 50%;
+    max-height: 20%;
     padding: 12px;
     color: black;
 }
@@ -212,6 +212,10 @@ img
 .ExtraBreak
 {
     margin-bottom: 100px;
+}
+.ExtraBreak1
+{
+    margin-bottom: 500px;
 }
 
 @media screen and (min-width: 767px) {
@@ -331,11 +335,11 @@ img
     {
         text-align: center;
         
-  display: grid;
-        grid-template-areas:
-        "header header"
-        "menu content"
-        "footer footer";
+        display: grid;
+            grid-template-areas:
+            "header header"
+            "menu content"
+            "footer footer";
         
     }
     .HMForm
@@ -354,6 +358,7 @@ img
     {
         height: 15px;
         padding-bottom: 20px;
+        margin-top: 20px;
     }
     #HMMan/*img*/
     {
@@ -435,6 +440,7 @@ img
     /* forms */
     .contact input
     {
+        max-height: 10%;
         width: 75%;
         height: 50%;
         padding: 20px;
@@ -443,7 +449,7 @@ img
     .contact input[type=submit]
     {
         margin-left: 100px;
-        margin-bottom: 200px;
+        margin-bottom: 100px;
     }
     .contact .place-contacts-next-to {
         display: inline-block;
