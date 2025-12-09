@@ -211,7 +211,7 @@ img
 }
 .ExtraBreak
 {
-    margin-bottom: 500px;
+    margin-bottom: 100px;
 }
 
 @media screen and (min-width: 767px) {
@@ -473,6 +473,10 @@ img
     .OnlyMobileDiv
     {
         display: none;
+    }
+    .ExtraBreak
+    {
+        margin-bottom: 0px;
     }
 }
 
