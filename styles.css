@@ -425,10 +425,6 @@ img
     {
         margin-top: 3%;
     }
-    img
-    {
-        max-width: 800;
-    }
     .aboutFlexContainer {
       display: grid;
       gap: 2px;
